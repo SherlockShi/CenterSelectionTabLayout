@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="itemWidth1">100dp</dimen>
+    <dimen name="selectionBackgroundWidth1">140dp</dimen>
+    <dimen name="selectionBackgroundHeight1">70dp</dimen>
+</resources>

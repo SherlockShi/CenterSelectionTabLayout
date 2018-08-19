@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.sherlockshi.widget.CenterSelectionTabLayout
+        android:id="@+id/center_selection_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <!--app:selectionBackground="#FF0000FF"-->
+
+    <com.sherlockshi.widget.CenterSelectionTabLayout
+        android:id="@+id/center_selection_tab_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:backgroundColor="#FF196FFA"
+        app:itemWidth="80dp"
+        app:selectionBackground="@drawable/bg_selected"
+        app:selectionBackgroundWidth="80dp"
+        app:selectionBackgroundHeight="50dp"
+        app:normalTextColor="#FF000000"
+        app:selectedTextColor="#FF00FF00"/>
+
+    <com.sherlockshi.widget.CenterSelectionTabLayout
+        android:id="@+id/center_selection_tab_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:backgroundColor="@color/background"
+        app:itemWidth="@dimen/itemWidth1"
+        app:selectionBackground="@drawable/bg_selected1"
+        app:selectionBackgroundWidth="@dimen/selectionBackgroundWidth1"
+        app:selectionBackgroundHeight="@dimen/selectionBackgroundHeight1"
+        app:normalTextColor="@color/colorPrimary"
+        app:selectedTextColor="@color/colorPrimaryDark"/>
+</LinearLayout>

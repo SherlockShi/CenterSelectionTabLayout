@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CenterSelectionTabLayout">
+        <attr name="itemWidth" format="reference|dimension"/>
+        <attr name="backgroundColor" format="reference|color"/>
+        <attr name="selectionBackground" format="reference"/>   <!-- 不能直接用 color -->
+        <attr name="selectionBackgroundWidth" format="reference|dimension"/>
+        <attr name="selectionBackgroundHeight" format="reference|dimension"/>
+        <attr name="normalTextColor" format="reference|color"/>
+        <attr name="selectedTextColor" format="reference|color"/>
+    </declare-styleable>
+</resources>
