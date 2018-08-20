@@ -308,8 +308,10 @@ public class CenterSelectionTabLayout extends FrameLayout {
 
         // 上一个选中的 View
         TextView lastView = (TextView) mRecyclerView.getChildAt(mLastSelectedPosition - firstPosition);
-        lastView.setTextColor(mNormalTextColor);
-        lastView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
+        if (lastView != null) {
+            lastView.setTextColor(mNormalTextColor);
+            lastView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
+        }
 
         // 当前选中的 View
         TextView currentView = (TextView) mRecyclerView.getChildAt(position - firstPosition);
