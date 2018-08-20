@@ -3,7 +3,7 @@
 
     <!-- 内部填充颜色 -->
     <solid
-        android:color="#33FF0000" />
+        android:color="#50FFEB3B" />
 
     <!-- 描边 -->
     <stroke

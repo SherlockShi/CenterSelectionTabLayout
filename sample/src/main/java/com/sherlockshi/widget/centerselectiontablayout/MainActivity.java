@@ -38,8 +38,20 @@ public class MainActivity extends AppCompatActivity {
 
         mCenterSelectionTabLayout2 = findViewById(R.id.center_selection_tab_layout2);
         mCenterSelectionTabLayout2.setData(mTitleList);
+        mCenterSelectionTabLayout2.setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
+            @Override
+            public void onItemSelect(int position) {
+                Toast.makeText(MainActivity.this, mTitleList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mCenterSelectionTabLayout3 = findViewById(R.id.center_selection_tab_layout3);
         mCenterSelectionTabLayout3.setData(mTitleList);
+        mCenterSelectionTabLayout3.setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
+            @Override
+            public void onItemSelect(int position) {
+                Toast.makeText(MainActivity.this, mTitleList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

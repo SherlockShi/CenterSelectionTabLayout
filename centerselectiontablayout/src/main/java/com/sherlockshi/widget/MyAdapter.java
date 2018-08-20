@@ -2,6 +2,7 @@ package com.sherlockshi.widget;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     // 字体颜色
     private int mNormalTextColor;
 
+    // 字体大小
+    private float mNormalTextSize;
+
     public MyAdapter(Context mContext) {
         this.mContext = mContext;
     }
@@ -52,6 +56,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void setNormalTextColor(int normalTextColor) {
         this.mNormalTextColor = normalTextColor;
+    }
+
+    public void setNormalTextSize(float normalTextSize) {
+        this.mNormalTextSize = normalTextSize;
     }
 
     @Override
@@ -94,6 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ViewHolderContent viewHolderContent = (ViewHolderContent) holder;
                 viewHolderContent.textView.setText(mTitleList.get(position));
                 viewHolderContent.textView.setTextColor(mNormalTextColor);
+                viewHolderContent.textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
                 viewHolderContent.textView.setLayoutParams(new LinearLayout.LayoutParams((int) mItemWidth, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }

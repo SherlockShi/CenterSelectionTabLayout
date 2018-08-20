@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -30,7 +31,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
     public static final int DEFAULT_SELECTED_POSITION   = 1;
 
     // 子项默认宽度
-    private static final float DEFAULT_ITEM_WIDTH_DP = 80;
+    private static final float DEFAULT_ITEM_WIDTH_DP = 60;
 
     // 默认背景颜色
     private static final int DEFAULT_BACKGROUND_COLOR      = 0xFF196FFA;
@@ -42,8 +43,12 @@ public class CenterSelectionTabLayout extends FrameLayout {
     private static final float DEFAULT_SELECTION_BACKGROUND_HEIGHT_DP   = 30;
 
     // 字体颜色
-    private static final int NORMAL_TEXT_COLOR      = 0xFF8FB4FC;
-    private static final int SELECTED_TEXT_COLOR    = 0xFFFFFFFF;
+    private static final int DEFAULT_NORMAL_TEXT_COLOR      = 0xFF8FB4FC;
+    private static final int DEFAULT_SELECTED_TEXT_COLOR    = 0xFFFFFFFF;
+
+    // 字体大小
+    private static final float DEFAULT_NORMAL_TEXT_SIZE_SP = 14;
+    private static final float DEFAULT_SELECTED_TEXT_SIZE_SP = 15;
 
     private Context mContext;
 
@@ -73,6 +78,10 @@ public class CenterSelectionTabLayout extends FrameLayout {
     // 字体颜色
     private int mNormalTextColor;
     private int mSelectedTextColor;
+
+    // 字体大小
+    private float mNormalTextSize;
+    private float mSelectedTextSize;
 
     private float mDownX;
     private float mLastX;
@@ -114,10 +123,14 @@ public class CenterSelectionTabLayout extends FrameLayout {
             mSelectionBackgroundHeight = a.getDimension(R.styleable.CenterSelectionTabLayout_selectionBackgroundHeight, ScreenUtil.dp2px(mContext, DEFAULT_SELECTION_BACKGROUND_HEIGHT_DP));
 
             // 正常文字颜色
-            mNormalTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_normalTextColor, NORMAL_TEXT_COLOR);
+            mNormalTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_normalTextColor, DEFAULT_NORMAL_TEXT_COLOR);
 
             // 选中文字颜色
-            mSelectedTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_selectedTextColor, SELECTED_TEXT_COLOR);
+            mSelectedTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_selectedTextColor, DEFAULT_SELECTED_TEXT_COLOR);
+
+            // 字体大小
+            mNormalTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_normalTextSize, ScreenUtil.dp2px(mContext, DEFAULT_NORMAL_TEXT_SIZE_SP));
+            mSelectedTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_selectedTextSize, ScreenUtil.dp2px(mContext, DEFAULT_SELECTED_TEXT_SIZE_SP));
         } finally {
             a.recycle();
         }
@@ -193,6 +206,9 @@ public class CenterSelectionTabLayout extends FrameLayout {
 
         // 设置字体颜色
         mAdapter.setNormalTextColor(mNormalTextColor);
+
+        // 设置字体大小
+        mAdapter.setNormalTextSize(mNormalTextSize);
 
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -293,10 +309,12 @@ public class CenterSelectionTabLayout extends FrameLayout {
         // 上一个选中的 View
         TextView lastView = (TextView) mRecyclerView.getChildAt(mLastSelectedPosition - firstPosition);
         lastView.setTextColor(mNormalTextColor);
+        lastView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
 
         // 当前选中的 View
         TextView currentView = (TextView) mRecyclerView.getChildAt(position - firstPosition);
         currentView.setTextColor(mSelectedTextColor);
+        currentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mSelectedTextSize);
 
         mLastSelectedPosition = position;
 

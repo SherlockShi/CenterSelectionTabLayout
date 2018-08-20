@@ -1,1 +1,1 @@
-include ':app', ':centerselectiontablayout'
+include ':sample', ':centerselectiontablayout'
