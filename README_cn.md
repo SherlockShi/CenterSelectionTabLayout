@@ -1,22 +1,22 @@
 # CenterSelectionTabLayout
 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
 
-A TabLayout with a centered selection effect.
+一个居中选中效果的 TabLayout。
 
-# Function
-1. centered selection
-2. scroll to select
-3. click to select
+# 功能
+1. 居中选中
+2. 滚动选择
+3. 点击选择
 
-# Document
-English
-[中文](./README_cn.md)
+# 文档
+[English](./README.md)
+中文
 
-# Screenshot
+# 截图
 ![CenterSelectionTabLayout](http://7xlpfl.com1.z0.glb.clouddn.com/sherlockshi/2018-08-20-demo2.gif)
 
-# Dependency
-Add the JitPack repository to your root build.gradle at the end of repositories:
+# 依赖
+在根目录下的 build.gradle 中，repositories 的末尾，添加 JitPack 仓库：
 
 ```groovy
 allprojects {
@@ -27,19 +27,19 @@ allprojects {
 }
 ```
 
-Add the dependency in your module build.gradle:
+在模块的 build.gradle 文件中添加依赖：
 ```groovy
 dependencies {
         implementation 'com.github.SherlockShi:CenterSelectionTabLayout:x.y.z'
 }
 ```
 
-x.y.z is [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
+x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
 
-other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
+其它依赖方法，请参考 [JitPack](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
 
-# Usage
-##### 1. use in xml files:
+# 用法
+##### 1. 在 xml 文件中添加布局:
 ```xml
 <com.sherlockshi.widget.CenterSelectionTabLayout
     android:id="@+id/center_selection_tab_layout"
@@ -56,9 +56,9 @@ other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockS
     app:selectedTextSize="17sp"/>
 ```
 
-CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README.md#Attributes)
+CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README.md#Attributes)
 
-##### 2. `setData` and `setOnItemSelectListener`:
+##### 2. `setData` 和 `setOnItemSelectListener`:
 ```java
 CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
 mCenterSelectionTabLayout.setData(mTitleList);
@@ -70,17 +70,17 @@ mCenterSelectionTabLayout.setOnItemSelectListener(new CenterSelectionTabLayout.o
 });
 ```
 
-# Attributes
-| Attribute | function | Value Type | example |
+# 属性
+| 属性 | 功能 | 取值类型 | 例子 |
 | --- | --- | --- | --- |
-| itemWidth | tab width | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/itemWidth1 |
-| selectionBackground | selection area background | reference | @drawable/bg_selected |
-| selectionBackgroundWidth | selection area width | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/selectionBackgroundWidth1 |
-| selectionBackgroundHeight | selection area height | 1. dimension<br>2. reference | 1. 40dp<br>2. @dimen/selectionBackgroundHeight1 |
-| normalTextColor | text color when normal | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalTextColor1 |
-| selectedTextColor | text color when selected | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedTextColor1 |
-| normalTextSize | text size when normal | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalTextSize1 |
-| selectedTextSize | text size when selected | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedTextSize1 |
+| itemWidth | tab 宽度 | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/itemWidth1 |
+| selectionBackground | 选中区域背景 | reference | @drawable/bg_selected |
+| selectionBackgroundWidth | 选中区域宽度 | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/selectionBackgroundWidth1 |
+| selectionBackgroundHeight | 选中区域高度 | 1. dimension<br>2. reference | 1. 40dp<br>2. @dimen/selectionBackgroundHeight1 |
+| normalTextColor | 正常的文字颜色 | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalTextColor1 |
+| selectedTextColor | 选中的文字颜色 | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedTextColor1 |
+| normalTextSize | 正常的文字大小 | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalTextSize1 |
+| selectedTextSize | 选中的文字大小 | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedTextSize1 |
 
 # ProGuard
 ```groovy
