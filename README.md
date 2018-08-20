@@ -30,7 +30,7 @@ allprojects {
 Add the dependency in your module build.gradle:
 ```groovy
 dependencies {
-        implementation 'com.github.SherlockShi:CenterSelectionTabLayout:x.y.z'
+    implementation 'com.github.SherlockShi:CenterSelectionTabLayout:x.y.z'
 }
 ```
 
@@ -56,7 +56,7 @@ other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockS
     app:selectedTextSize="17sp"/>
 ```
 
-CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README.md#Attributes)
+CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout#attributes)
 
 ##### 2. `setData` and `setOnItemSelectListener`:
 ```java

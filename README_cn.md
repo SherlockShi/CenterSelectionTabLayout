@@ -16,7 +16,7 @@
 ![CenterSelectionTabLayout](http://7xlpfl.com1.z0.glb.clouddn.com/sherlockshi/2018-08-20-demo2.gif)
 
 # 依赖
-在根目录下的 build.gradle 中，repositories 的末尾，添加 JitPack 仓库：
+在根目录下的 build.gradle 文件中，添加 JitPack 仓库：
 
 ```groovy
 allprojects {
@@ -30,7 +30,7 @@ allprojects {
 在模块的 build.gradle 文件中添加依赖：
 ```groovy
 dependencies {
-        implementation 'com.github.SherlockShi:CenterSelectionTabLayout:x.y.z'
+    implementation 'com.github.SherlockShi:CenterSelectionTabLayout:x.y.z'
 }
 ```
 
@@ -56,7 +56,7 @@ x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](h
     app:selectedTextSize="17sp"/>
 ```
 
-CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README.md#Attributes)
+CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README_cn.md#%E5%B1%9E%E6%80%A7)
 
 ##### 2. `setData` 和 `setOnItemSelectListener`:
 ```java
