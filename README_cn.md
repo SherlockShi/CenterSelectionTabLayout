@@ -39,7 +39,7 @@ x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](h
 其它依赖方法，请参考 [JitPack](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
 
 # 用法
-##### 1. 在 xml 文件中添加布局:
+### 1. 在 xml 文件中添加布局:
 ```xml
 <com.sherlockshi.widget.CenterSelectionTabLayout
     android:id="@+id/center_selection_tab_layout"
@@ -58,7 +58,7 @@ x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](h
 
 CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README_cn.md#%E5%B1%9E%E6%80%A7)
 
-##### 2. `setData` 和 `setOnItemSelectListener`:
+### 2. `setData` 和 `setOnItemSelectListener`:
 ```java
 CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
 mCenterSelectionTabLayout.setData(mTitleList);

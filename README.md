@@ -39,7 +39,7 @@ x.y.z is [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](ht
 other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockShi/CenterSelectionTabLayout)
 
 # Usage
-##### 1. use in xml files:
+### 1. use in xml files:
 ```xml
 <com.sherlockshi.widget.CenterSelectionTabLayout
     android:id="@+id/center_selection_tab_layout"
@@ -58,7 +58,7 @@ other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockS
 
 CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout#attributes)
 
-##### 2. `setData` and `setOnItemSelectListener`:
+### 2. `setData` and `setOnItemSelectListener`:
 ```java
 CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
 mCenterSelectionTabLayout.setData(mTitleList);
