@@ -50,10 +50,10 @@ x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](h
     app:selectionBackground="@drawable/bg_selected"
     app:selectionBackgroundWidth="70dp"
     app:selectionBackgroundHeight="40dp"
-    app:normalTextColor="#FF009688"
-    app:selectedTextColor="#FF00FF00"
-    app:normalTextSize="16sp"
-    app:selectedTextSize="17sp"/>
+    app:normalStateTextColor="#FF009688"
+    app:selectedStateTextColor="#FF00FF00"
+    app:normalStateTextSize="16sp"
+    app:selectedStateTextSize="17sp"/>
 ```
 
 CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README_cn.md#%E5%B1%9E%E6%80%A7)
@@ -77,10 +77,10 @@ mCenterSelectionTabLayout.setOnItemSelectListener(new CenterSelectionTabLayout.o
 | selectionBackground | 选中区域背景 | reference | @drawable/bg_selected |
 | selectionBackgroundWidth | 选中区域宽度 | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/selectionBackgroundWidth1 |
 | selectionBackgroundHeight | 选中区域高度 | 1. dimension<br>2. reference | 1. 40dp<br>2. @dimen/selectionBackgroundHeight1 |
-| normalTextColor | 正常的文字颜色 | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalTextColor1 |
-| selectedTextColor | 选中的文字颜色 | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedTextColor1 |
-| normalTextSize | 正常的文字大小 | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalTextSize1 |
-| selectedTextSize | 选中的文字大小 | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedTextSize1 |
+| normalStateTextColor | 正常的文字颜色 | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalStateTextColor1 |
+| selectedStateTextColor | 选中的文字颜色 | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedStateTextColor1 |
+| normalStateTextSize | 正常的文字大小 | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalStateTextSize1 |
+| selectedStateTextSize | 选中的文字大小 | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedStateTextSize1 |
 
 # ProGuard
 ```groovy

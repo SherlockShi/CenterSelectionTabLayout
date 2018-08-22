@@ -29,10 +29,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private float mItemWidth;
 
     // 字体颜色
-    private int mNormalTextColor;
+    private int mNormalStateTextColor;
 
     // 字体大小
-    private float mNormalTextSize;
+    private float mNormalStateTextSize;
 
     public MyAdapter(Context mContext) {
         this.mContext = mContext;
@@ -54,12 +54,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.mItemWidth = itemWidth;
     }
 
-    public void setNormalTextColor(int normalTextColor) {
-        this.mNormalTextColor = normalTextColor;
+    public void setNormalStateTextColor(int normalStateTextColor) {
+        this.mNormalStateTextColor = normalStateTextColor;
     }
 
-    public void setNormalTextSize(float normalTextSize) {
-        this.mNormalTextSize = normalTextSize;
+    public void setNormalStateTextSize(float normalStateTextSize) {
+        this.mNormalStateTextSize = normalStateTextSize;
     }
 
     @Override
@@ -101,8 +101,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case CONTENT:
                 ViewHolderContent viewHolderContent = (ViewHolderContent) holder;
                 viewHolderContent.textView.setText(mTitleList.get(position));
-                viewHolderContent.textView.setTextColor(mNormalTextColor);
-                viewHolderContent.textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
+                viewHolderContent.textView.setTextColor(mNormalStateTextColor);
+                viewHolderContent.textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalStateTextSize);
                 viewHolderContent.textView.setLayoutParams(new LinearLayout.LayoutParams((int) mItemWidth, ViewGroup.LayoutParams.MATCH_PARENT));
                 break;
         }

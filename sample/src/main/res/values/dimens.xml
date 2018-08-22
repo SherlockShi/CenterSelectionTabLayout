@@ -3,6 +3,6 @@
     <dimen name="itemWidth1">80dp</dimen>
     <dimen name="selectionBackgroundWidth1">80dp</dimen>
     <dimen name="selectionBackgroundHeight1">50dp</dimen>
-    <dimen name="normalTextSize1">18sp</dimen>
-    <dimen name="selectedTextSize1">19sp</dimen>
+    <dimen name="normalStateTextSize1">18sp</dimen>
+    <dimen name="selectedStateTextSize1">19sp</dimen>
 </resources>

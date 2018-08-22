@@ -6,9 +6,9 @@
         <attr name="selectionBackground"        format="reference"/>   <!-- 不能直接用 color -->
         <attr name="selectionBackgroundWidth"   format="reference|dimension"/>
         <attr name="selectionBackgroundHeight"  format="reference|dimension"/>
-        <attr name="normalTextColor"            format="reference|color"/>
-        <attr name="selectedTextColor"          format="reference|color"/>
-        <attr name="normalTextSize"             format="reference|dimension"/>
-        <attr name="selectedTextSize"           format="reference|dimension"/>
+        <attr name="normalStateTextColor"            format="reference|color"/>
+        <attr name="selectedStateTextColor"          format="reference|color"/>
+        <attr name="normalStateTextSize"             format="reference|dimension"/>
+        <attr name="selectedStateTextSize"           format="reference|dimension"/>
     </declare-styleable>
 </resources>

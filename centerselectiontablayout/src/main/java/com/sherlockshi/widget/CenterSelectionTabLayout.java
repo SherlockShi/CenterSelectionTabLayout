@@ -76,12 +76,12 @@ public class CenterSelectionTabLayout extends FrameLayout {
     private float mSelectionBackgroundHeight;
 
     // 字体颜色
-    private int mNormalTextColor;
-    private int mSelectedTextColor;
+    private int mNormalStateTextColor;
+    private int mSelectedStateTextColor;
 
     // 字体大小
-    private float mNormalTextSize;
-    private float mSelectedTextSize;
+    private float mNormalStateTextSize;
+    private float mSelectedStateTextSize;
 
     private float mDownX;
     private float mLastX;
@@ -123,14 +123,14 @@ public class CenterSelectionTabLayout extends FrameLayout {
             mSelectionBackgroundHeight = a.getDimension(R.styleable.CenterSelectionTabLayout_selectionBackgroundHeight, ScreenUtil.dp2px(mContext, DEFAULT_SELECTION_BACKGROUND_HEIGHT_DP));
 
             // 正常文字颜色
-            mNormalTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_normalTextColor, DEFAULT_NORMAL_TEXT_COLOR);
+            mNormalStateTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_normalStateTextColor, DEFAULT_NORMAL_TEXT_COLOR);
 
             // 选中文字颜色
-            mSelectedTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_selectedTextColor, DEFAULT_SELECTED_TEXT_COLOR);
+            mSelectedStateTextColor = a.getColor(R.styleable.CenterSelectionTabLayout_selectedStateTextColor, DEFAULT_SELECTED_TEXT_COLOR);
 
             // 字体大小
-            mNormalTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_normalTextSize, ScreenUtil.dp2px(mContext, DEFAULT_NORMAL_TEXT_SIZE_SP));
-            mSelectedTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_selectedTextSize, ScreenUtil.dp2px(mContext, DEFAULT_SELECTED_TEXT_SIZE_SP));
+            mNormalStateTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_normalStateTextSize, ScreenUtil.dp2px(mContext, DEFAULT_NORMAL_TEXT_SIZE_SP));
+            mSelectedStateTextSize = a.getDimensionPixelSize(R.styleable.CenterSelectionTabLayout_selectedStateTextSize, ScreenUtil.dp2px(mContext, DEFAULT_SELECTED_TEXT_SIZE_SP));
         } finally {
             a.recycle();
         }
@@ -205,10 +205,10 @@ public class CenterSelectionTabLayout extends FrameLayout {
         mAdapter.setItemWidth(mItemWidth);
 
         // 设置字体颜色
-        mAdapter.setNormalTextColor(mNormalTextColor);
+        mAdapter.setNormalStateTextColor(mNormalStateTextColor);
 
         // 设置字体大小
-        mAdapter.setNormalTextSize(mNormalTextSize);
+        mAdapter.setNormalStateTextSize(mNormalStateTextSize);
 
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -309,14 +309,14 @@ public class CenterSelectionTabLayout extends FrameLayout {
         // 上一个选中的 View
         TextView lastView = (TextView) mRecyclerView.getChildAt(mLastSelectedPosition - firstPosition);
         if (lastView != null) {
-            lastView.setTextColor(mNormalTextColor);
-            lastView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalTextSize);
+            lastView.setTextColor(mNormalStateTextColor);
+            lastView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalStateTextSize);
         }
 
         // 当前选中的 View
         TextView currentView = (TextView) mRecyclerView.getChildAt(position - firstPosition);
-        currentView.setTextColor(mSelectedTextColor);
-        currentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mSelectedTextSize);
+        currentView.setTextColor(mSelectedStateTextColor);
+        currentView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mSelectedStateTextSize);
 
         mLastSelectedPosition = position;
 

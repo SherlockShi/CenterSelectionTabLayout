@@ -24,10 +24,10 @@
         app:selectionBackground="@drawable/bg_selected"
         app:selectionBackgroundWidth="70dp"
         app:selectionBackgroundHeight="40dp"
-        app:normalTextColor="#FF009688"
-        app:selectedTextColor="#FF00FF00"
-        app:normalTextSize="16sp"
-        app:selectedTextSize="17sp"/>
+        app:normalStateTextColor="#FF009688"
+        app:selectedStateTextColor="#FF00FF00"
+        app:normalStateTextSize="16sp"
+        app:selectedStateTextSize="17sp"/>
 
     <com.sherlockshi.widget.CenterSelectionTabLayout
         android:id="@+id/center_selection_tab_layout3"
@@ -39,8 +39,8 @@
         app:selectionBackground="@drawable/bg_selected1"
         app:selectionBackgroundWidth="@dimen/selectionBackgroundWidth1"
         app:selectionBackgroundHeight="@dimen/selectionBackgroundHeight1"
-        app:normalTextColor="@color/normalTextColor1"
-        app:selectedTextColor="@color/selectedTextColor1"
-        app:normalTextSize="@dimen/normalTextSize1"
-        app:selectedTextSize="@dimen/selectedTextSize1"/>
+        app:normalStateTextColor="@color/normalStateTextColor1"
+        app:selectedStateTextColor="@color/selectedStateTextColor1"
+        app:normalStateTextSize="@dimen/normalStateTextSize1"
+        app:selectedStateTextSize="@dimen/selectedStateTextSize1"/>
 </LinearLayout>

@@ -50,10 +50,10 @@ other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockS
     app:selectionBackground="@drawable/bg_selected"
     app:selectionBackgroundWidth="70dp"
     app:selectionBackgroundHeight="40dp"
-    app:normalTextColor="#FF009688"
-    app:selectedTextColor="#FF00FF00"
-    app:normalTextSize="16sp"
-    app:selectedTextSize="17sp"/>
+    app:normalStateTextColor="#FF009688"
+    app:selectedStateTextColor="#FF00FF00"
+    app:normalStateTextSize="16sp"
+    app:selectedStateTextSize="17sp"/>
 ```
 
 CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout#attributes)
@@ -77,10 +77,10 @@ mCenterSelectionTabLayout.setOnItemSelectListener(new CenterSelectionTabLayout.o
 | selectionBackground | selection area background | reference | @drawable/bg_selected |
 | selectionBackgroundWidth | selection area width | 1. dimension<br>2. reference | 1. 70dp<br>2. @dimen/selectionBackgroundWidth1 |
 | selectionBackgroundHeight | selection area height | 1. dimension<br>2. reference | 1. 40dp<br>2. @dimen/selectionBackgroundHeight1 |
-| normalTextColor | text color when normal | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalTextColor1 |
-| selectedTextColor | text color when selected | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedTextColor1 |
-| normalTextSize | text size when normal | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalTextSize1 |
-| selectedTextSize | text size when selected | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedTextSize1 |
+| normalStateTextColor | text color when normal | 1. color<br>2. reference | 1. #FF009688<br>2. @color/normalStateTextColor1 |
+| selectedStateTextColor | text color when selected | 1. color<br>2. reference | 1. #FF00FF00<br>2. @color/selectedStateTextColor1 |
+| normalStateTextSize | text size when normal | 1. dimension<br>2. reference | 1. 16sp<br>2. @dimen/normalStateTextSize1 |
+| selectedStateTextSize | text size when selected | 1. dimension<br>2. reference | 1. 17sp<br>2. @dimen/selectedStateTextSize1 |
 
 # ProGuard
 ```groovy
