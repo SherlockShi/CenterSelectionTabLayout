@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int CONTENT = 2;
 
     private Context mContext;
-    private List<String> mTitleList = new ArrayList<String>();
+    private List<BaseItemEntity> mTitleList = new ArrayList<BaseItemEntity>();
     private int mScreenWidth;
     private float mItemWidth;
 
@@ -38,12 +38,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.mContext = mContext;
     }
 
-    public void setData(List<String> titleList) {
+    public void setData(List<BaseItemEntity> titleList) {
         // 第0项和 size-1 项为空 View
         this.mTitleList.clear();
-        this.mTitleList.add("");
+        this.mTitleList.add(null);
         this.mTitleList.addAll(titleList);
-        this.mTitleList.add("");
+        this.mTitleList.add(null);
     }
 
     public void setScreenWidth(int screenWidth) {
@@ -100,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             case CONTENT:
                 ViewHolderContent viewHolderContent = (ViewHolderContent) holder;
-                viewHolderContent.textView.setText(mTitleList.get(position));
+                viewHolderContent.textView.setText(mTitleList.get(position).getItemTitle());
                 viewHolderContent.textView.setTextColor(mNormalStateTextColor);
                 viewHolderContent.textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mNormalStateTextSize);
                 viewHolderContent.textView.setLayoutParams(new LinearLayout.LayoutParams((int) mItemWidth, ViewGroup.LayoutParams.MATCH_PARENT));

@@ -13,7 +13,7 @@ English
 [中文](./README_cn.md)
 
 # Screenshot
-![CenterSelectionTabLayout](http://7xlpfl.com1.z0.glb.clouddn.com/sherlockshi/2018-08-20-demo2.gif)
+![CenterSelectionTabLayout](https://github.com/SherlockShi/CenterSelectionTabLayout/art/CenterSelectionTabLayout.gif)
 
 # Dependency
 Add the JitPack repository to your root build.gradle at the end of repositories:
@@ -58,16 +58,71 @@ other dependency method, please refer to [JitPack](https://jitpack.io/#SherlockS
 
 CenterSelectionTabLayout has many additional attributes, please refer to [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout#attributes)
 
-### 2. `setData` and `setOnItemSelectListener`:
-```java
-CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
-mCenterSelectionTabLayout.setData(mTitleList);
-mCenterSelectionTabLayout.setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
-    @Override
-    public void onItemSelect(int position) {
-        Toast.makeText(MainActivity.this, mTitleList.get(position), Toast.LENGTH_SHORT).show();
+### 2. create a class，implements `BaseItemEntity` interface，override `getItemTitle()`
+
+```Java
+public class BodyEntity implements BaseItemEntity {
+
+    private String id;
+    private String title;
+
+    public BodyEntity(String id, String title) {
+        this.id = id;
+        this.title = title;
     }
-});
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     *
+     * @return title: item title
+     */
+    @Override
+    public String getItemTitle() {
+        return title;
+    }
+}
+```
+
+### 3. init data
+```Java
+private List<BaseItemEntity> mBodyList = new ArrayList<>();
+mBodyList.add(new BodyEntity("001", "头部"));
+...
+mBodyList.add(new BodyEntity("008", "下肢"));
+```
+
+### 4. set data and Listener
+- `setData(List<BaseItemEntity>)`：set data
+- `setSelectedPosition(int)`：set default selected position
+- `setOnItemSelectListener(onItemSelectListener)`：item select listener
+- `create()`：remember to call this method ！
+
+```Java
+CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
+mCenterSelectionTabLayout
+        .setData(mBodyList)
+        .setSelectedPosition(0)
+        .setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
+            @Override
+            public void onItemSelect(int position) {
+                Toast.makeText(MainActivity.this, mBodyList.get(position).getItemTitle(), Toast.LENGTH_SHORT).show();
+            }
+}).create();
 ```
 
 # Attributes

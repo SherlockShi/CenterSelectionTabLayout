@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,23 +27,23 @@ import java.util.List;
 public class CenterSelectionTabLayout extends FrameLayout {
 
     // 默认选中项：下标为1的项（因为第0项为空 View）
-    public static final int DEFAULT_SELECTED_POSITION   = 1;
+    public static final int DEFAULT_SELECTED_POSITION = 1;
 
     // 子项默认宽度
     private static final float DEFAULT_ITEM_WIDTH_DP = 60;
 
     // 默认背景颜色
-    private static final int DEFAULT_BACKGROUND_COLOR      = 0xFF196FFA;
+    private static final int DEFAULT_BACKGROUND_COLOR = 0xFF196FFA;
 
     // 选中框默认宽度
-    private static final float DEFAULT_SELECTION_BACKGROUND_WIDTH_DP    = 60;
+    private static final float DEFAULT_SELECTION_BACKGROUND_WIDTH_DP = 60;
 
     // 选中框默认高度
-    private static final float DEFAULT_SELECTION_BACKGROUND_HEIGHT_DP   = 30;
+    private static final float DEFAULT_SELECTION_BACKGROUND_HEIGHT_DP = 30;
 
     // 字体颜色
-    private static final int DEFAULT_NORMAL_TEXT_COLOR      = 0xFF8FB4FC;
-    private static final int DEFAULT_SELECTED_TEXT_COLOR    = 0xFFFFFFFF;
+    private static final int DEFAULT_NORMAL_TEXT_COLOR = 0xFF8FB4FC;
+    private static final int DEFAULT_SELECTED_TEXT_COLOR = 0xFFFFFFFF;
 
     // 字体大小
     private static final float DEFAULT_NORMAL_TEXT_SIZE_SP = 14;
@@ -52,7 +51,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
 
     private Context mContext;
 
-    private List<String> mTitleList = new ArrayList<String>();
+    private List<BaseItemEntity> mTitleList = new ArrayList<BaseItemEntity>();
 
     private FrameLayout mFrameLayout;
     private RecyclerView mRecyclerView;
@@ -108,6 +107,15 @@ public class CenterSelectionTabLayout extends FrameLayout {
         initView();
     }
 
+    public CenterSelectionTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        this.mContext = context;
+
+        setCustomAttrs(context, attrs);
+
+        initView();
+    }
+
     private void setCustomAttrs(@NonNull Context context, @Nullable AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CenterSelectionTabLayout);
         try {
@@ -136,24 +144,28 @@ public class CenterSelectionTabLayout extends FrameLayout {
         }
     }
 
-    public CenterSelectionTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        this.mContext = context;
-        initView();
-    }
-
-    public void setOnItemSelectListener(onItemSelectListener onItemSelectListener) {
+    public CenterSelectionTabLayout setOnItemSelectListener(onItemSelectListener onItemSelectListener) {
         this.mOnItemSelectListener = onItemSelectListener;
+        return this;
     }
 
-    public void setData(List<String> titleList) {
-        this.mTitleList.clear();
-        this.mTitleList.add("");
-        this.mTitleList.addAll(titleList);
-        this.mTitleList.add("");
+    public CenterSelectionTabLayout setData(List<BaseItemEntity> titleList) {
+        mTitleList.clear();
+        mTitleList.add(null);
+        mTitleList.addAll(titleList);
+        mTitleList.add(null);
+
         mAdapter.setData(titleList);
         mAdapter.notifyDataSetChanged();
+        return this;
+    }
 
+    public CenterSelectionTabLayout setSelectedPosition(int position) {
+        mLastSelectedPosition = position + 1;   // 第0项为空 View
+        return this;
+    }
+
+    public void create() {
         this.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -161,10 +173,6 @@ public class CenterSelectionTabLayout extends FrameLayout {
                 scrollToPosition(mLastSelectedPosition);
             }
         }, 50);
-    }
-
-    public void setScreenWidth(int screenWidth) {
-        mAdapter.setScreenWidth(screenWidth);
     }
 
     private void initView() {
@@ -176,7 +184,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
 
         initRecyclerView();
 
-        setScreenWidth(ScreenUtil.getScreenWidth(mContext));
+        mAdapter.setScreenWidth(ScreenUtil.getScreenWidth(mContext));
     }
 
     private void initSelectionBackgroundView() {
@@ -219,20 +227,20 @@ public class CenterSelectionTabLayout extends FrameLayout {
                     case MotionEvent.ACTION_DOWN:   //按下
                         mDownX = event.getRawX();
                         mLastX = mDownX;
-                        Log.d("OnTouch", "ACTION_DOWN=" + mDownX);
+//                        Log.d("OnTouch", "ACTION_DOWN=" + mDownX);
                         break;
 
                     case MotionEvent.ACTION_MOVE:   //移动
                         float currentMoveX = event.getRawX();
                         float offsetX = currentMoveX - mLastX;
-                        Log.d("OnTouch", "ACTION_MOVE=" + (-offsetX));
+//                        Log.d("OnTouch", "ACTION_MOVE=" + (-offsetX));
                         mRecyclerView.scrollBy((int) -offsetX, 0);
                         mLastX = currentMoveX;
                         break;
 
                     case MotionEvent.ACTION_UP:     //松开
                         mUpX = event.getRawX();
-                        Log.d("OnTouch", "ACTION_UP=" + mUpX);
+//                        Log.d("OnTouch", "ACTION_UP=" + mUpX);
                         if (mDownX == mUpX) {
                             moveClickItemToCenter(mUpX);
                         } else {
@@ -249,14 +257,14 @@ public class CenterSelectionTabLayout extends FrameLayout {
         int firstPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
         int lastPosition = mLinearLayoutManager.findLastVisibleItemPosition();
 
-        for (int i = 0; i <= lastPosition-firstPosition; i++) {
+        for (int i = 0; i <= lastPosition - firstPosition; i++) {
             View view = mRecyclerView.getChildAt(i);
 
             if (view != null) {
                 float tvX = view.getX();
 
                 if ((clickX > tvX) && (clickX <= (tvX + mItemWidth))) {
-                    scrollToPosition(firstPosition+i);
+                    scrollToPosition(firstPosition + i);
                     return;
                 }
             }
@@ -278,7 +286,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
         int firstPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
         int lastPosition = mLinearLayoutManager.findLastVisibleItemPosition();
 
-        for (int i = 0; i <= lastPosition-firstPosition; i++) {
+        for (int i = 0; i <= lastPosition - firstPosition; i++) {
             View view = mRecyclerView.getChildAt(i);
 
             if (view != null) {
@@ -287,7 +295,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
                 float spacing = Math.abs(tvX - xCenter);
 
                 if (spacing < currentSpacing) {
-                    currentIndex = (firstPosition+i);
+                    currentIndex = (firstPosition + i);
                     currentSpacing = Math.abs(tvX - xCenter);
                 }
             }
@@ -296,7 +304,7 @@ public class CenterSelectionTabLayout extends FrameLayout {
         scrollToPosition(currentIndex);
     }
 
-    public void scrollToPosition(int position) {
+    private void scrollToPosition(int position) {
         // 前、后两个空 View 点击无效
         if (position <= 0 || (position >= mTitleList.size() - 1)) {
             return;

@@ -13,7 +13,7 @@
 中文
 
 # 截图
-![CenterSelectionTabLayout](http://7xlpfl.com1.z0.glb.clouddn.com/sherlockshi/2018-08-20-demo2.gif)
+![CenterSelectionTabLayout](https://github.com/SherlockShi/CenterSelectionTabLayout/art/CenterSelectionTabLayout.gif)
 
 # 依赖
 在根目录下的 build.gradle 文件中，添加 JitPack 仓库：
@@ -58,16 +58,71 @@ x.y.z 即 [![](https://jitpack.io/v/SherlockShi/CenterSelectionTabLayout.svg)](h
 
 CenterSelectionTabLayout 有许多额外的属性, 请参考 [Attributes](https://github.com/SherlockShi/CenterSelectionTabLayout/blob/master/README_cn.md#%E5%B1%9E%E6%80%A7)
 
-### 2. `setData` 和 `setOnItemSelectListener`:
-```java
-CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
-mCenterSelectionTabLayout.setData(mTitleList);
-mCenterSelectionTabLayout.setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
-    @Override
-    public void onItemSelect(int position) {
-        Toast.makeText(MainActivity.this, mTitleList.get(position), Toast.LENGTH_SHORT).show();
+### 2. 创建实体类，实现 `BaseItemEntity` 接口，重写 `getItemTitle()`
+
+```Java
+public class BodyEntity implements BaseItemEntity {
+
+    private String id;
+    private String title;
+
+    public BodyEntity(String id, String title) {
+        this.id = id;
+        this.title = title;
     }
-});
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     *
+     * @return title: item title
+     */
+    @Override
+    public String getItemTitle() {
+        return title;
+    }
+}
+```
+
+### 3. 初始化数据
+```Java
+private List<BaseItemEntity> mBodyList = new ArrayList<>();
+mBodyList.add(new BodyEntity("001", "头部"));
+...
+mBodyList.add(new BodyEntity("008", "下肢"));
+```
+
+### 4. 设置数据及选中事件
+- `setData(List<BaseItemEntity>)`：设置数据
+- `setSelectedPosition(int)`：默认选中位置
+- `setOnItemSelectListener(onItemSelectListener)`：选中事件
+- `create()`：切记要调用！
+
+```Java
+CenterSelectionTabLayout mCenterSelectionTabLayout = findViewById(R.id.center_selection_tab_layout);
+mCenterSelectionTabLayout
+        .setData(mBodyList)
+        .setSelectedPosition(0)
+        .setOnItemSelectListener(new CenterSelectionTabLayout.onItemSelectListener() {
+            @Override
+            public void onItemSelect(int position) {
+                Toast.makeText(MainActivity.this, mBodyList.get(position).getItemTitle(), Toast.LENGTH_SHORT).show();
+            }
+}).create();
 ```
 
 # 属性
