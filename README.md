@@ -13,7 +13,7 @@ English
 [中文](./README_cn.md)
 
 # Screenshot
-![CenterSelectionTabLayout](https://github.com/SherlockShi/CenterSelectionTabLayout/art/CenterSelectionTabLayout.gif)
+![CenterSelectionTabLayout](https://ws1.sinaimg.cn/large/006tNc79ly1g2vg6lh32pg30gu0zke83.gif)
 
 # Dependency
 Add the JitPack repository to your root build.gradle at the end of repositories:
