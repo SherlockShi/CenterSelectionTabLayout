@@ -13,7 +13,7 @@
 中文
 
 # 截图
-![CenterSelectionTabLayout](https://ws1.sinaimg.cn/large/006tNc79ly1g2vg6lh32pg30gu0zke83.gif)
+![CenterSelectionTabLayout](https://ws1.sinaimg.cn/large/006tNc79ly1g2vgjsl8zug308f0hs1j0.gif)
 
 # 依赖
 在根目录下的 build.gradle 文件中，添加 JitPack 仓库：
